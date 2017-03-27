@@ -8,14 +8,12 @@ public class DamageOverTime : MonoBehaviour {
     //   damage will be dealt every second.
 
     private float BaseDamage;
-    private float DamageTaken;
     private float dotDuration;
     private Stopwatch dotTimer;
 
 	// Use this for initialization
 	void Start () {
         BaseDamage = 10f;
-        DamageTaken = 0f;
         dotDuration = 4f;   // 4 second, should deal 40 dmg;
         dotTimer = new Stopwatch();
         StartCoroutine(DealDamageOverTime());

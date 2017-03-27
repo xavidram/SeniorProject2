@@ -8,8 +8,6 @@ public class Stun : MonoBehaviour
 
     //  Stun Behaviour variables
     private float SlowDuration;
-    private float SlowReduction;
-    private bool isAlreadySlowed;
     private Stopwatch SlowTimer;
 
     private float oldSpeed;
@@ -18,8 +16,6 @@ public class Stun : MonoBehaviour
     void Start()
     {
         SlowDuration = 3f;  // In Seconds
-        SlowReduction = BossValues.Speed;   // How much to reduce obj speed by
-        isAlreadySlowed = false;
         SlowTimer = new Stopwatch();
 
         oldSpeed = BossValues.Speed;

@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class ProjectileBehaviour : MonoBehaviour {
 
     //  Range Ability variables
-    private float minDistance;
     private float maxDistance;
     private float lifeDistance;
     private float projectileSpeed;
@@ -26,8 +26,8 @@ public class ProjectileBehaviour : MonoBehaviour {
         if (!this.gameObject.activeSelf)
             this.gameObject.SetActive(true);
         gameObject.tag = "Projectile";
-        minDistance = 5f; maxDistance = 10f;
-        lifeDistance = Random.Range(minDistance, maxDistance);
+        maxDistance = 10f;
+        lifeDistance = maxDistance;
         mouseLocation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //  Ignore colission with player
         Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), GameObject.Find("Player").GetComponent<Collider2D>());
@@ -38,12 +38,14 @@ public class ProjectileBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        targetDistance = Vector3.Distance(startPosition, this.transform.position);
         if(targetDistance < lifeDistance)
         {
             targetDistance = Vector3.Distance(startPosition, this.transform.position);
             this.transform.Translate(mouseLocation * projectileSpeed * Time.deltaTime);
-        }else
+        }else if(targetDistance > lifeDistance)
         {
+            //Destroy(this.gameObject);
             this.gameObject.SetActive(false);
         }
 	}
