@@ -12,9 +12,16 @@ public class ProjectileBehaviour : MonoBehaviour {
     private Vector3 mouseLocation;
     private float targetDistance;
     private Vector3 startPosition;
+    private Sprite[] Sprites;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
+
+        //  Load all sprites from Projectile sprites folder
+        Sprites = Resources.LoadAll<Sprite>("Sprites/ProjectileSprites");
+        //  Select one sprite.
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = Sprites[0];
+
         //  enable prefab
         if (!this.gameObject.activeSelf)
             this.gameObject.SetActive(true);
@@ -27,7 +34,7 @@ public class ProjectileBehaviour : MonoBehaviour {
         startPosition = this.transform.position;
         targetDistance = Vector3.Distance(startPosition, this.transform.position);
         projectileSpeed = 0.5f;   //Speed of projectile
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
