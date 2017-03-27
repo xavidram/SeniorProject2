@@ -37,6 +37,7 @@ public class PlayerControls : MonoBehaviour {
         UnityEngine.Debug.Log(BossValues.Speed.ToString());
         GameObject Clone = Instantiate<GameObject>(Projectile);
         Clone.transform.position = this.transform.position;
+        Clone.GetComponent<Renderer>().enabled = true;
         Clone.SetActive(true);
     }
 }
