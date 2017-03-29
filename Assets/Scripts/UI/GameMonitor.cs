@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -31,7 +32,16 @@ public class GameMonitor : MonoBehaviour {
                                                               BossHealthBar.rectTransform.localScale.z);
 
         // If player or boss health reach zero, then bring up dialoug to restart.
+        if (PlayerValues.Health <= 0)
+            LoadScene("Defeat");
+        else if (BossValues.Health <= 0)
+            LoadScene("Victory");
 
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
 }

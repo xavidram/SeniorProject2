@@ -6,7 +6,7 @@ public class PlayerValues {
 
     public static float _Health = 100;
     public static float _MaxHealth = 100;
-    public static float _Speed = 1.5f;
+    public static float _Speed = 2.5f;
     public static float _Armor = 10f;
 
     //  Limit what variables can be overwritten or only read

@@ -17,24 +17,5 @@ public class PlayerBehaviour : MonoBehaviour {
 	void Update () {
 		
 	}
-
-    public void TakeBasicDamage(float Dmg)
-    {
-        //  Check for armor, subtract armor from damage, then apply the rest
-        DMG = Dmg - PlayerValues.Armor;
-        if(DMG < 0)
-        {
-            // No damage take, armor soaked it up
-        }else
-        {
-            PlayerValues.Health -= DMG;
-        }
-    }
-
-    public void Slow(float Time)
-    {
-
-    }
-
     
 }

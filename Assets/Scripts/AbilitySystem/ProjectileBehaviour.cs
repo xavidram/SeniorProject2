@@ -6,13 +6,13 @@ using UnityEngine;
 public class ProjectileBehaviour : MonoBehaviour {
 
     //  Range Ability variables
-    private float maxDistance;
     private float lifeDistance;
     private float projectileSpeed;
     private Vector3 mouseLocation;
-    private float targetDistance;
+    private Vector3 targetVector;
     private Vector3 startPosition;
     private Sprite[] Sprites;
+    private float targetDistance;
 
     // Use this for initialization
     void Start() {
@@ -26,14 +26,14 @@ public class ProjectileBehaviour : MonoBehaviour {
         if (!this.gameObject.activeSelf)
             this.gameObject.SetActive(true);
         gameObject.tag = "Projectile";
-        maxDistance = 10f;
-        lifeDistance = maxDistance;
+        lifeDistance = 10f;
         mouseLocation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //  Ignore colission with player
         Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), GameObject.Find("Player").GetComponent<Collider2D>());
         startPosition = this.transform.position;
-        targetDistance = Vector3.Distance(startPosition, this.transform.position);
-        projectileSpeed = 0.5f;   //Speed of projectile
+        targetVector = mouseLocation - this.transform.position;
+        targetVector.z = 0;
+        projectileSpeed = 2f;   //Speed of projectile
     }
 	
 	// Update is called once per frame
@@ -42,7 +42,7 @@ public class ProjectileBehaviour : MonoBehaviour {
         if(targetDistance < lifeDistance)
         {
             targetDistance = Vector3.Distance(startPosition, this.transform.position);
-            this.transform.Translate(mouseLocation * projectileSpeed * Time.deltaTime);
+            transform.Translate(targetVector.normalized * projectileSpeed * Time.deltaTime);
         }else if(targetDistance > lifeDistance)
         {
             //Destroy(this.gameObject);

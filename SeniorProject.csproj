@@ -78,6 +78,9 @@
     <Compile Include="Assets\Scripts\AbilitySystem\Abilities\IceShard.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Behaviours\Damage.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Behaviours\DamageOverTime.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Behaviours\HealthRegen.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Behaviours\Knockback.cs" />
+    <Compile Include="Assets\Scripts\AbilitySystem\Behaviours\LifeSteal.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Behaviours\Slow.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\Behaviours\Stun.cs" />
     <Compile Include="Assets\Scripts\AbilitySystem\ProjectileBehaviour.cs" />
