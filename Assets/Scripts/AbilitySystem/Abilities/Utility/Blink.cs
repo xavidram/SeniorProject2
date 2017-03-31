@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
-public class PlayerBehaviour : MonoBehaviour {
+public class Blink : MonoBehaviour {
 
-    private float DMG;
-    private Stopwatch Timer;
+    private float blinkDistance;
 
 	// Use this for initialization
 	void Start () {
@@ -17,5 +15,4 @@ public class PlayerBehaviour : MonoBehaviour {
 	void Update () {
 		
 	}
-    
 }
