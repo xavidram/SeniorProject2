@@ -12,6 +12,7 @@ public class BPSpriteController : MonoBehaviour {
         bp = gameObject.GetComponentInParent<BossProjectile>();
         r = GetComponent<Renderer>();
         r.enabled = enabled;
+        Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), GameObject.Find("Boss").GetComponent<Collider2D>());
     }
 	
 	// Update is called once per frame
@@ -23,6 +24,7 @@ public class BPSpriteController : MonoBehaviour {
         if (coll.gameObject.name == "Player") {
             print("boss hit player");
             bp.Collide(coll.gameObject);
+            bp.Reset();
         }
     }
 }

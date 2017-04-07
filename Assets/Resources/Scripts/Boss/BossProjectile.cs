@@ -52,7 +52,7 @@ public class BossProjectile : MonoBehaviour {
         if (firing) {
             if (fireTimer > 0) {
                 fireTimer -= Time.deltaTime;
-                transform.Translate(targetVector.normalized * 1 * Time.deltaTime);
+                transform.Translate(targetVector.normalized * 3 * Time.deltaTime);
             }
             else {
                 print("Reset");

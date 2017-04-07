@@ -14,6 +14,7 @@ public class Steroids : MonoBehaviour {
 	void Start () {
         movementBuff = 1.5f;
         abilityDuration = 5f;   // 5 sec
+        abilityTimer = new Stopwatch();
         abilityTimer.Start();
 
         if(this.gameObject.name == "Player")
