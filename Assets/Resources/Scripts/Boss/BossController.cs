@@ -7,7 +7,9 @@ public class BossController : MonoBehaviour {
     private Renderer r;
     private GameObject Player;
 
-    private BossProjectile bp;
+    private BossAbility ability1;
+    private float a1Cooldown = 5;
+    private float a1Timer;
 
     // Use this for initialization
     void Start() {
@@ -15,7 +17,7 @@ public class BossController : MonoBehaviour {
         r.enabled = true;
         Player = GameObject.FindWithTag("Player");
 
-        bp = GameObject.Find("BossProjectile").GetComponent<BossProjectile>();
+        ability1 = GameObject.Find("BossProjectile").GetComponent<BossAbility>();
     }
 
     // Update is called once per frame
@@ -24,9 +26,15 @@ public class BossController : MonoBehaviour {
             if (BossValues.Health <= 0)
                 r.enabled = false;
             else
-                transform.Translate(Player.transform.position.normalized * BossValues.Speed * Time.deltaTime);
+                transform.Translate((Player.transform.position-transform.position).normalized * BossValues.Speed * Time.deltaTime);
 
-            bp.Fire(Player.transform.position);
+            if (a1Timer <= 0) {
+                a1Timer = a1Cooldown;
+                ability1.Fire(Player.transform.position);
+            }
+            else {
+                a1Timer -= Time.deltaTime;
+            }
         }
     }
 }

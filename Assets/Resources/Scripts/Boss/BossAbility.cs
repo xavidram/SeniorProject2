@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossProjectile : MonoBehaviour {
+public class BossAbility : MonoBehaviour {
 
     private enum AbilityType : int {
         Projectile = 0,
@@ -63,12 +63,12 @@ public class BossProjectile : MonoBehaviour {
             print("behavior " + b);
         }
 
-        if(abilityType == (int)AbilityType.Projectile) {
+        if (abilityType == (int)AbilityType.Projectile) {
             range = 10f;
-            speed = 8f;
+            speed = 6f;
             print("boss ability is projectile");
         }
-        else if(abilityType == (int)AbilityType.Melee) {
+        else if (abilityType == (int)AbilityType.Melee) {
             range = 2f;
             speed = 8f;
             print("boss ability is melee");
