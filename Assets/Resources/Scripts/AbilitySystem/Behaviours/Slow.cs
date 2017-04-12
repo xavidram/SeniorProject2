@@ -32,7 +32,7 @@ public class Slow : MonoBehaviour {
             if(SlowTimer.Elapsed.Seconds >= SlowDuration)
             {
                 BossValues.Speed += SlowReduction; // Change speed back to original
-                Destroy(GetComponent<Slow>());  // Remove script once effect has ended.
+                Destroy(this.gameObject.GetComponent<Slow>());  // Remove script once effect has ended.
             }
         }
 	}

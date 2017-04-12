@@ -25,8 +25,22 @@ public class BossController : MonoBehaviour {
         if (r.enabled) {
             if (BossValues.Health <= 0)
                 r.enabled = false;
-            else
-                transform.Translate((Player.transform.position-transform.position).normalized * BossValues.Speed * Time.deltaTime);
+
+            if (PlayerValues.Health > 0)
+            {
+                if (Player == null)
+                {
+                    print("player not found");
+                }
+                else if (this.gameObject == null)
+                {
+                    print("boss not found");
+                }
+                else
+                {
+                    this.transform.Translate((Player.transform.position - this.transform.position).normalized * BossValues.Speed * Time.deltaTime);
+                }
+            }
 
             if (a1Timer <= 0) {
                 a1Timer = a1Cooldown;

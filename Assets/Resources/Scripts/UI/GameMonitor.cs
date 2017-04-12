@@ -33,7 +33,7 @@ public class GameMonitor : MonoBehaviour {
 
         // If player or boss health reach zero, then bring up dialoug to restart.
         if (PlayerValues.Health <= 0)
-            LoadScene("Defeat");
+            LoadScene("Defeated");
         else if (BossValues.Health <= 0)
             LoadScene("Victory");
 

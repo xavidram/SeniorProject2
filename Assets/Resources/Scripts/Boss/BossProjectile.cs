@@ -110,18 +110,26 @@ public class BossProjectile : MonoBehaviour {
     }
 
     public void Collide(GameObject target) {
-        foreach (int i in behaviors) {
-            if (i == (int)Behavior.Damage) {
-                target.AddComponent<Damage>();
-            }
-            else if (i == (int)Behavior.DamageOverTime) {
-                target.AddComponent<DamageOverTime>();
-            }
-            else if (i == (int)Behavior.Slow) {
-                target.AddComponent<Slow>();
-            }
-            else if (i == (int)Behavior.Stun) {
-                target.AddComponent<Stun>();
+        if(target.gameObject.name == "Player")
+        {
+            foreach (int i in behaviors)
+            {
+                if (i == (int)Behavior.Damage)
+                {
+                    target.AddComponent<Damage>();
+                }
+                else if (i == (int)Behavior.DamageOverTime)
+                {
+                    target.AddComponent<DamageOverTime>();
+                }
+                else if (i == (int)Behavior.Slow)
+                {
+                    target.AddComponent<Slow>();
+                }
+                else if (i == (int)Behavior.Stun)
+                {
+                    target.AddComponent<Stun>();
+                }
             }
         }
     }

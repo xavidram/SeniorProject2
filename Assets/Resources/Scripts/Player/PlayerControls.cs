@@ -16,7 +16,8 @@ public class PlayerControls : MonoBehaviour {
 
     private enum EAbilities: int
     {
-        Blink = 0
+        Blink = 0,
+        Barrier = 1
     }
 
     private GameObject Projectile;
@@ -46,7 +47,9 @@ public class PlayerControls : MonoBehaviour {
         Projectile = GameObject.Find("Projectile");
         resetAbilityBooleans(); //  Lets first reset abilities when game starts.
         WAbilityRandom = Random.Range(0, System.Enum.GetValues(typeof(WAbilities)).Length);
+        SetWAbility();
         EAbilityRandom = Random.Range(0, System.Enum.GetValues(typeof(EAbilities)).Length);
+        SetEAbility();
     }
 	
 	// Update is called once per frame
@@ -121,7 +124,7 @@ public class PlayerControls : MonoBehaviour {
     public void CastWAbility(){
         UnityEngine.Debug.Log(WAbilityRandom.ToString());
         if (WAbilityRandom == (int)WAbilities.Chainmain)
-            this.gameObject.AddComponent<Chainmail>();
+            this.gameObject.GetComponent<Chainmail>();
         else if (WAbilityRandom == (int)WAbilities.GoldenApple)
             this.gameObject.AddComponent<GoldenApple>();
         else if (WAbilityRandom == (int)WAbilities.SpellShield)
@@ -132,7 +135,13 @@ public class PlayerControls : MonoBehaviour {
     public void CastEAbility(){
         UnityEngine.Debug.Log(EAbilityRandom.ToString());
         if (EAbilityRandom == (int)EAbilities.Blink)
-            this.gameObject.AddComponent<Blink>();
+        {
+            this.gameObject.AddComponent<Blink>().UseAbility();
+        }else if (EAbilityRandom == (int)EAbilities.Barrier)
+        {
+            GameObject Rock = GameObject.Find("Rock");
+            Rock.gameObject.GetComponent<Barrier>().UseAbility(this.transform.position);
+        }         
     }
     public void CastRAbility(){}
 
@@ -141,6 +150,27 @@ public class PlayerControls : MonoBehaviour {
         wAbilityCasted = false;
         eAbilityCasted = false;
         rAbilityCasted = false;
+    }
+
+    public void SetWAbility()
+    {
+        UnityEngine.Debug.Log(WAbilityRandom.ToString());
+        if (WAbilityRandom == (int)WAbilities.Chainmain)
+            this.gameObject.AddComponent<Chainmail>();
+        else if (WAbilityRandom == (int)WAbilities.GoldenApple)
+            this.gameObject.AddComponent<GoldenApple>();
+        else if (WAbilityRandom == (int)WAbilities.SpellShield)
+            this.gameObject.AddComponent<SpellShield>();
+        else if (WAbilityRandom == (int)WAbilities.Steriods)
+            this.gameObject.AddComponent<Steroids>();
+    }
+    public void SetEAbility()
+    {
+        UnityEngine.Debug.Log(EAbilityRandom.ToString());
+        if (EAbilityRandom == (int)EAbilities.Blink)
+            this.gameObject.AddComponent<Blink>();
+        //else if (EAbilityRandom == (int)EAbilities.Barrier)
+           //
     }
 
 }
