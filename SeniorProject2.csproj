@@ -90,6 +90,7 @@
     <Compile Include="Assets\Resources\Scripts\AbilitySystem\Behaviours\Stun.cs" />
     <Compile Include="Assets\Resources\Scripts\AbilitySystem\ProjectileBehaviour.cs" />
     <Compile Include="Assets\Resources\Scripts\Boss\BPSpriteController.cs" />
+    <Compile Include="Assets\Resources\Scripts\Boss\BossAbility.cs" />
     <Compile Include="Assets\Resources\Scripts\Boss\BossController.cs" />
     <Compile Include="Assets\Resources\Scripts\Boss\BossMovement.cs" />
     <Compile Include="Assets\Resources\Scripts\Boss\BossProjectile.cs" />
