@@ -10,4 +10,25 @@ public class MenuCtrl : MonoBehaviour {
         SceneManager.LoadScene(sceneName);
     }
 	
+    public void setRating(int value)
+    {
+        // set the rating
+        GameData.GameRating = value;
+        //call function to send all the data
+        //pushData();
+        UnityEngine.Debug.Log(GameData.GameRating.ToString());
+    }
+
+    //push all the data to the rest api
+    public void pushData()
+    {
+        //  Grab player data and serialize it
+
+        //  Grab boss data and serialize it
+
+        //  Grab Game statistics and serialize it
+
+        //  Push to API
+    }
+
 }
