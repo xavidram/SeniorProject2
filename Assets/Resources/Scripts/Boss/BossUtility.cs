@@ -24,6 +24,18 @@ public class BossUtility : MonoBehaviour {
         boss = GameObject.Find("Boss");
 
         utility = Random.Range(1, 100) % 3;
+
+        //debug
+        print("boss utility");
+        if(utility == 0) {
+            print("armor");
+        }
+        else if(utility == 1) {
+            print("healthregen");
+        }
+        else if(utility == 2) {
+            print("speed");
+        }
 	}
 	
 	// Update is called once per frame

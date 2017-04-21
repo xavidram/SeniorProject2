@@ -19,6 +19,6 @@ public class HealthRegen : MonoBehaviour {
 			else
 				BossValues.Health += BossValues.HealthGain;
 		}
-		Destroy(gameObject);	// Remove script
+		Destroy(this);	// Remove script
 	}
 }

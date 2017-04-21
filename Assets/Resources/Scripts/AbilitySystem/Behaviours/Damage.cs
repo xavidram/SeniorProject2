@@ -34,7 +34,7 @@ public class Damage : MonoBehaviour {
                 PlayerValues.Health -= DamageTaken;
             }
         }
-        Destroy(this.gameObject.GetComponent<Damage>());
+        Destroy(this);
 	}
 
 }

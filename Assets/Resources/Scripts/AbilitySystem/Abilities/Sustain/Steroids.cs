@@ -40,7 +40,7 @@ public class Steroids : MonoBehaviour {
             }
             abilityTimer.Stop();
             abilityTimer.Reset();
-            Destroy(gameObject);
+            Destroy(this);
         }
 	}
 }

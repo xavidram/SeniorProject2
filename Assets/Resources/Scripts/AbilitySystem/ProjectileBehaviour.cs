@@ -56,7 +56,6 @@ public class ProjectileBehaviour : MonoBehaviour {
         {
             UnityEngine.Debug.Log("Enemy Hit, Applying Behaviour");
             hitObject.gameObject.AddComponent<DamageOverTime>();  //  Add Slow Behaviour;
-            Destroy(gameObject);
         }
     }
 

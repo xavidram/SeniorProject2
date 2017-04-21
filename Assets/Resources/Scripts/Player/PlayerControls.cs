@@ -21,6 +21,8 @@ public class PlayerControls : MonoBehaviour {
     }
 
     private GameObject Projectile;
+    private ProjectileBehaviour PBehavior;
+
     //  ability cooldown stopwatch timers
     private Stopwatch qStopwatch = new Stopwatch();
     private Stopwatch wStopwatch = new Stopwatch();

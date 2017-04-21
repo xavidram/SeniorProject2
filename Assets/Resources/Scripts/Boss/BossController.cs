@@ -16,9 +16,9 @@ public class BossController : MonoBehaviour {
 
     private float a1CD = 6f;
     private float a1Timer;
-    private float a2CD = 6f;
+    private float a2CD = 12f;
     private float a2Timer;
-    private float a3CD = 6f;
+    private float a3CD = 9f;
     private float a3Timer;
 
     private int decider;

@@ -29,7 +29,7 @@ public class Stun : MonoBehaviour
         if (SlowTimer.Elapsed.Seconds >= SlowDuration)
         {
             BossValues.Speed = oldSpeed; // Change speed back to original
-            Destroy(this.gameObject.GetComponent<Stun>());  // Remove script once effect has ended.
+            Destroy(this);  // Remove script once effect has ended.
         }
     }
 }

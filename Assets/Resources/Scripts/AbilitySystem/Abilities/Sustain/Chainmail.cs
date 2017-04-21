@@ -41,7 +41,7 @@ public class Chainmail : MonoBehaviour {
             //  Remove script from object
             abilityTimer.Stop();
             abilityTimer.Reset();
-            Destroy(gameObject);
+            Destroy(this);
         }
 	}
 }

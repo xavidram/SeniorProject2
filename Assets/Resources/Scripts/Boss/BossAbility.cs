@@ -69,12 +69,6 @@ public class BossAbility : MonoBehaviour {
             }
         }
 
-        /*
-        //print out behaviors added ------ for testing purposes
-        foreach (int b in behaviors) {
-            print("behavior " + b);
-        }*/
-
         if (abilityType == (int)AbilityType.Projectile) {
             range = 10f;
             speed = 6f;
@@ -84,6 +78,29 @@ public class BossAbility : MonoBehaviour {
             range = 2f;
             speed = 8f;
             //print("boss ability is melee");
+        }
+
+        //debug
+        print("boss projectile " + abilityNum);
+        if(abilityType == 0) {
+            print("projectile");
+        }
+        else if(abilityType == 1) {
+            print("melee");
+        }
+        foreach(int b in behaviors) {
+            if(b == (int)Behavior.Damage) {
+                print("damage");
+            }
+            else if(b == (int)Behavior.DamageOverTime) {
+                print("dot");
+            }
+            else if(b == (int)Behavior.Slow) {
+                print("slow");
+            }
+            else if(b == (int)Behavior.Stun) {
+                print("stun");
+            }
         }
     }
 

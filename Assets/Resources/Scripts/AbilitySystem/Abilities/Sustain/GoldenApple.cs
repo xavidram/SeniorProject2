@@ -16,7 +16,7 @@ public class GoldenApple : MonoBehaviour {
             BossValues.Health += ((BossValues.Health + healthAddon) > BossValues.MaxHealth) ? 100 : healthAddon;
 
         //  Remove the script
-        Destroy(gameObject);
+        Destroy(this);
 	}
 
 }

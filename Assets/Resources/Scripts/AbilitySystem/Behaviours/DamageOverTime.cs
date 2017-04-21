@@ -38,6 +38,6 @@ public class DamageOverTime : MonoBehaviour {
 
             yield return new WaitForSeconds(1); // deal every second
         }
-        Destroy(this.gameObject.GetComponent<DamageOverTime>());    // Remove script after damage dealt
+        Destroy(this);   // Remove script after damage dealt
     }
 }
