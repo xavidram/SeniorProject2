@@ -18,5 +18,4 @@ public class GameData {
         get { return _GameRating; }
         set { _GameRating = value; }
     }
-
 }

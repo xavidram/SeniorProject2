@@ -101,6 +101,7 @@
     <Compile Include="Assets\Resources\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Resources\Scripts\Player\PlayerValues.cs" />
     <Compile Include="Assets\Resources\Scripts\UI\GameData.cs" />
+    <Compile Include="Assets\Resources\Scripts\UI\GameInfo.cs" />
     <Compile Include="Assets\Resources\Scripts\UI\GameMonitor.cs" />
     <Compile Include="Assets\Resources\Scripts\UI\MenuCtrl.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
