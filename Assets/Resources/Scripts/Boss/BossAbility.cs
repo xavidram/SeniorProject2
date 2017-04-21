@@ -50,16 +50,19 @@ public class BossAbility : MonoBehaviour {
         //generate behaviors for projectile
         behaviors = new List<int>();
         
-        //add random behaviors
-        for (int i = 0; i <= 3; i++) {
-            if (Random.Range(0, 100) > 50) {
-                behaviors.Add(i);
-            }
+        //add behaviors
+        if((Random.Range(0, 100)) < 50) {
+            //chance to add damage or dot
+            behaviors.Add(Random.Range(0, 100) % 2);
+        }
+        if ((Random.Range(0, 100)) < 50) {
+            //chance to add slow or stun
+            behaviors.Add((Random.Range(0, 100) % 2) + 2);
         }
 
         //ensure at least one behavior
         if (behaviors.Count == 0) {
-            behaviors.Add(Random.Range(0, 3));
+            behaviors.Add(Random.Range(0, 4));
         }
 
         //if ability2 and no damage, add damage
@@ -72,12 +75,10 @@ public class BossAbility : MonoBehaviour {
         if (abilityType == (int)AbilityType.Projectile) {
             range = 10f;
             speed = 6f;
-            //print("boss ability is projectile");
         }
         else if (abilityType == (int)AbilityType.Melee) {
             range = 2f;
             speed = 8f;
-            //print("boss ability is melee");
         }
 
         //debug
@@ -115,6 +116,10 @@ public class BossAbility : MonoBehaviour {
                 Reset();
             }
         }
+    }
+
+    public float GetRange() {
+        return range;
     }
 
     public void Fire(Vector3 targetPos) {

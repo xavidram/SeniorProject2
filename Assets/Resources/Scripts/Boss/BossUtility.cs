@@ -10,7 +10,7 @@ public class BossUtility : MonoBehaviour {
      * Barrier      terrain block
      * Blink        teleport
     */
-    private enum Behavior : int {
+    public enum Behavior : int {
         Armor = 0,
         HealthRegen = 1,
         Speed = 2
@@ -42,6 +42,10 @@ public class BossUtility : MonoBehaviour {
 	void Update () {
 		//do animation stuff for buff
 	}
+
+    public int GetUType() {
+        return utility;
+    }
 
     public void Use() {
         if(utility == (int)Behavior.Armor) {

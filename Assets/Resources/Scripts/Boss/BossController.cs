@@ -45,18 +45,40 @@ public class BossController : MonoBehaviour {
     void Update() {
 
         if (internalTimer <= 0) {
-            //do abilities
+            Vector3 distFromPlayer = Player.transform.position - transform.position;
+            float playerDist = distFromPlayer.magnitude;
+            int UType = ability3.GetUType();
+
+            if(UType == (int)BossUtility.Behavior.Armor) {
+                if (a3Timer <= 0) {
+                    ability3.Use();
+                }
+            }
+            else if (UType == (int)BossUtility.Behavior.HealthRegen) {
+                if (a3Timer <= 0) {
+                    if (BossValues.Health < BossValues.MaxHealth) {
+                        ability3.Use();
+                    }
+                }
+            }
+            else if (UType == (int)BossUtility.Behavior.Speed) {
+                if(a3Timer <= 0) {
+                    if(playerDist > ability2.GetRange() || playerDist > ability1.GetRange()) {
+                        ability3.Use();
+                    }
+                }
+            }
             if (a2Timer <= 0) {
-                ability2.Fire(Player.transform.position);
-                a2Timer = a2CD;
+                if(playerDist < ability2.GetRange()) {
+                    ability2.Fire(Player.transform.position);
+                    a2Timer = a2CD;
+                }
             }
-            else if (a3Timer <= 0) {
-                ability3.Use();
-                a3Timer = a3CD;
-            }
-            else if (a1Timer <= 0) {
-                ability1.Fire(Player.transform.position);
-                a1Timer = a1CD;
+            if (a1Timer <= 0) {
+                if (playerDist < ability1.GetRange()) {
+                    ability1.Fire(Player.transform.position);
+                    a1Timer = a1CD;
+                }
             }
 
             internalTimer = internalCD;
