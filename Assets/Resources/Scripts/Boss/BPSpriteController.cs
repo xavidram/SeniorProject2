@@ -12,9 +12,9 @@ public class BPSpriteController : MonoBehaviour {
     void Start () {
         bp = gameObject.GetComponentInParent<BossAbility>();
         r = GetComponent<Renderer>();
-        r.enabled = enabled;
+        r.enabled = false;
         bpCollider = GetComponent<PolygonCollider2D>();
-        bpCollider.enabled = true;
+        bpCollider.enabled = false;
         Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), GameObject.Find("Boss").GetComponent<Collider2D>());
     }
 	
@@ -22,6 +22,11 @@ public class BPSpriteController : MonoBehaviour {
 	void Update () {
 		//do
 	}
+
+    public void Rotate(Vector3 targetVector) {
+        float angle = Mathf.Atan2(targetVector.x, targetVector.y) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.back);
+    }
 
     public void HideSprite() {
         r.enabled = false;

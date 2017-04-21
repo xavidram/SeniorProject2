@@ -51,6 +51,7 @@
      <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Sustain\GoldenApple.cs" />
      <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Sustain\SpellShield.cs" />
      <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Sustain\Steroids.cs" />
+     <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Utility\Barrier.cs" />
      <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Utility\Blink.cs" />
      <Compile Include="Assets\Resources\Scripts\AbilitySystem\Behaviours\Damage.cs" />
      <Compile Include="Assets\Resources\Scripts\AbilitySystem\Behaviours\DamageOverTime.cs" />
@@ -63,13 +64,14 @@
      <Compile Include="Assets\Resources\Scripts\Boss\BPSpriteController.cs" />
      <Compile Include="Assets\Resources\Scripts\Boss\BossAbility.cs" />
      <Compile Include="Assets\Resources\Scripts\Boss\BossController.cs" />
-     <Compile Include="Assets\Resources\Scripts\Boss\BossMovement.cs" />
-     <Compile Include="Assets\Resources\Scripts\Boss\BossProjectile.cs" />
+     <Compile Include="Assets\Resources\Scripts\Boss\BossUtility.cs" />
      <Compile Include="Assets\Resources\Scripts\Boss\BossValues.cs" />
      <Compile Include="Assets\Resources\Scripts\GameStats\GameStatistics.cs" />
      <Compile Include="Assets\Resources\Scripts\Player\PlayerControls.cs" />
      <Compile Include="Assets\Resources\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Resources\Scripts\Player\PlayerValues.cs" />
+     <Compile Include="Assets\Resources\Scripts\UI\GameData.cs" />
+     <Compile Include="Assets\Resources\Scripts\UI\GameInfo.cs" />
      <Compile Include="Assets\Resources\Scripts\UI\GameMonitor.cs" />
      <Compile Include="Assets\Resources\Scripts\UI\MenuCtrl.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />

@@ -9,6 +9,8 @@ public class BossValues {
     public static float _Speed = 2f;
     public static float _Armor = 10f;
 
+    public static float _HealthGain = 10f;
+
     public static float _DamageTaken = 0;
     public static float _DamageDealt = 0;
 
@@ -44,6 +46,11 @@ public class BossValues {
     {
         get { return _Armor; }
         set { _Armor = value; }
+    }
+
+    public static float HealthGain {
+        get { return _HealthGain; }
+        set { _HealthGain = value; }
     }
 
     public static float DamageTaken

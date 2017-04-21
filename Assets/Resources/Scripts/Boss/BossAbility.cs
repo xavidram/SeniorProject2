@@ -21,6 +21,7 @@ public class BossAbility : MonoBehaviour {
 
     private List<int> behaviors;
     private int abilityType;
+    private int abilityNum;
 
     private float range;
     private float speed;
@@ -34,44 +35,55 @@ public class BossAbility : MonoBehaviour {
     void Start() {
         //settle projectile stuff
         boss = GameObject.Find("Boss");
-        spriteController = GetComponentInChildren<BPSpriteController>();
+        spriteController = gameObject.GetComponentInChildren<BPSpriteController>();
+
+        if(gameObject.name == "BossProjectile") {
+            abilityNum = 1;
+        }
+        else if (gameObject.name == "BossProjectile2") {
+            abilityNum = 2;
+        }
 
         //decide if melee or projectile
-
         abilityType = (Random.Range(1, 100)) % 2;
-
 
         //generate behaviors for projectile
         behaviors = new List<int>();
-
-        behaviors.Add(0);
-
-        /*
+        
+        //add random behaviors
         for (int i = 0; i <= 3; i++) {
             if (Random.Range(0, 100) > 50) {
                 behaviors.Add(i);
             }
         }
 
+        //ensure at least one behavior
         if (behaviors.Count == 0) {
             behaviors.Add(Random.Range(0, 3));
         }
-        */
 
+        //if ability2 and no damage, add damage
+        if (abilityNum == 2) {
+            if (!(behaviors.Contains(0) || behaviors.Contains(1))) {
+                behaviors.Add(0);
+            }
+        }
+
+        /*
         //print out behaviors added ------ for testing purposes
         foreach (int b in behaviors) {
             print("behavior " + b);
-        }
+        }*/
 
         if (abilityType == (int)AbilityType.Projectile) {
             range = 10f;
             speed = 6f;
-            print("boss ability is projectile");
+            //print("boss ability is projectile");
         }
         else if (abilityType == (int)AbilityType.Melee) {
             range = 2f;
             speed = 8f;
-            print("boss ability is melee");
+            //print("boss ability is melee");
         }
     }
 
@@ -96,6 +108,7 @@ public class BossAbility : MonoBehaviour {
             spriteController.EnableCollision();
             targetVector = targetPos - transform.position;
             targetVector.z = 0;
+            spriteController.Rotate(targetVector);
             distTraveled = 0;
             firing = true;
         }

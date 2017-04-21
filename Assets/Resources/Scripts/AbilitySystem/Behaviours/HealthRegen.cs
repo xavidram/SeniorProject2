@@ -10,14 +10,14 @@ public class HealthRegen : MonoBehaviour {
 	void Start () {
 		if(this.gameObject.tag == "Player"){
 			if((PlayerValues.Health + HealthGain) > PlayerValues.MaxHealth)
-				PlayerValues.Health = 100;
+				PlayerValues.Health = PlayerValues.MaxHealth;
 			else
 				PlayerValues.Health += HealthGain;
 		}else if(this.gameObject.tag == "Boss"){
 			if((BossValues.Health + HealthGain) > BossValues.MaxHealth)
-				BossValues.Health = 100;
+				BossValues.Health = BossValues.MaxHealth;
 			else
-				BossValues.Health += HealthGain;
+				BossValues.Health += BossValues.HealthGain;
 		}
 		Destroy(gameObject);	// Remove script
 	}
