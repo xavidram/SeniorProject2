@@ -13,6 +13,15 @@ public class ProjectileBehaviour : MonoBehaviour {
     private Vector3 startPosition;
     private Sprite[] Sprites;
     private float targetDistance;
+    private List<int> behaviors;
+    private int abilityNum;
+
+    private enum Behavior : int {
+        Damage = 0,
+        DamageOverTime = 1,
+        Slow = 2,
+        Stun = 3
+    }
 
     // Use this for initialization
     void Start() {
@@ -21,6 +30,19 @@ public class ProjectileBehaviour : MonoBehaviour {
         Sprites = Resources.LoadAll<Sprite>("Sprites/ProjectileSprites");
         //  Select one sprite.
         this.gameObject.GetComponent<SpriteRenderer>().sprite = Sprites[0];
+
+        behaviors = new List<int>();
+        // Add random behaviors
+        for (int i = 0; i <= System.Enum.GetValues(typeof(Behavior)).Length; i++){
+            if (Random.Range(0,100) > 50) {
+                behaviors.Add(i);
+            }
+        }
+
+        // Ensure at least one behavior
+        if (behaviors.Count == 0){
+            behaviors.Add(Random.Range(0,System.Enum.GetValues(typeof(Behavior)).Length));
+        }
 
         //  enable prefab
         if (!this.gameObject.activeSelf)
@@ -55,7 +77,20 @@ public class ProjectileBehaviour : MonoBehaviour {
         if (hitObject.gameObject.name == "Boss")
         {
             UnityEngine.Debug.Log("Enemy Hit, Applying Behaviour");
-            hitObject.gameObject.AddComponent<DamageOverTime>();  //  Add Slow Behaviour;
+            foreach (int i in behaviors) {
+                if (i == (int)Behavior.Damage) {
+                    hitObject.gameObject.AddComponent<Damage>();
+                }
+                else if (i == (int)Behavior.DamageOverTime) {
+                    hitObject.gameObject.AddComponent<DamageOverTime>();
+                }
+                else if (i == (int)Behavior.Slow) {
+                    hitObject.gameObject.AddComponent<Slow>();
+                }
+                else if (i == (int)Behavior.Stun) {
+                    hitObject.gameObject.AddComponent<Stun>();
+                }
+            }
         }
     }
 
