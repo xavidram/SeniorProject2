@@ -29,9 +29,30 @@ public class PlayerValues {
     public static float _RAbilityCasts = 0;
     public static float _RAbilityHits = 0;
 
+    public static float _QCoolDownTime = 3f;
+    public static float _WCoolDownTime = 8f;
+    public static float _ECoolDownTime = 5f;
+    public static float _RCoolDownTime = 20f;
+
 
 
     //  Limit what variables can be overwritten or only read
+    public static float QCoolDownTime
+    {
+        get { return _QCoolDownTime; }
+    }
+    public static float WCoolDownTime
+    {
+        get { return _WCoolDownTime; }
+    }
+    public static float ECoolDownTime
+    {
+        get { return _ECoolDownTime; }
+    }
+    public static float RCoolDownTime
+    {
+        get { return _RCoolDownTime; }
+    }
     public static float Health
     {
         get { return _Health; }

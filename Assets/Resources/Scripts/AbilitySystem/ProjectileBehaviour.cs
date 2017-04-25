@@ -91,6 +91,7 @@ public class ProjectileBehaviour : MonoBehaviour {
                     hitObject.gameObject.AddComponent<Stun>();
                 }
             }
+            Destroy(this.gameObject);
         }
     }
 
