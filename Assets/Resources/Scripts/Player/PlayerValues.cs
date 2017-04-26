@@ -13,19 +13,19 @@ public class PlayerValues {
     public static float _DamageDealt = 0;
 
     //  Q Ability Data
-    public static List<string> _QAbilityBehaviours;
+    public static string _QAbilityBehaviors = " ";
     public static float _QAbilityCasts = 0;
     public static float _QAbilityHits = 0;
     //  W Ability Data
-    public static string _WAbilityName;
+    public static string _WAbilityName = " ";
     public static float _WAbilityCasts = 0;
     public static float _WAbilityHits = 0;
     //  E Ability Data
-    public static string _EAbilityName;
+    public static string _EAbilityName = " ";
     public static float _EAbilityCasts = 0;
     public static float _EAbilityHits = 0;
     // R Ability Data
-    public static string _RAbilityName;
+    public static string _RAbilityName = " ";
     public static float _RAbilityCasts = 0;
     public static float _RAbilityHits = 0;
 
@@ -85,10 +85,10 @@ public class PlayerValues {
         set { _DamageDealt = value; }
     }
 
-    public static List<string> QAbilityBehaviors
+    public static string QAbilityBehaviors
     {
-        get { return _QAbilityBehaviours; }
-        set { _QAbilityBehaviours = value; }
+        get { return _QAbilityBehaviors; }
+        set { _QAbilityBehaviors = value; }
     }
     
     public static float QAbilityCasts

@@ -43,6 +43,8 @@ public class ProjectileBehaviour : MonoBehaviour {
         if (behaviors.Count == 0){
             behaviors.Add(Random.Range(0,System.Enum.GetValues(typeof(Behavior)).Length));
         }
+        // set player value of behaviors
+        ListOfBehaviors();
 
         //  enable prefab
         if (!this.gameObject.activeSelf)
@@ -76,6 +78,7 @@ public class ProjectileBehaviour : MonoBehaviour {
     {
         if (hitObject.gameObject.name == "Boss")
         {
+            PlayerValues.QAbilityHits += 1;
             UnityEngine.Debug.Log("Enemy Hit, Applying Behaviour");
             foreach (int i in behaviors) {
                 if (i == (int)Behavior.Damage) {
@@ -93,6 +96,31 @@ public class ProjectileBehaviour : MonoBehaviour {
             }
             Destroy(this.gameObject);
         }
+    }
+
+    public void ListOfBehaviors()
+    {
+        string behaviorsList = "";
+        foreach (int i in behaviors)
+        {
+            if (i == (int)Behavior.Damage)
+            {
+                behaviorsList += "Damage ";
+            }
+            else if (i == (int)Behavior.DamageOverTime)
+            {
+                behaviorsList += "DamageOverTime ";
+            }
+            else if (i == (int)Behavior.Slow)
+            {
+                behaviorsList += "Slow ";
+            }
+            else if (i == (int)Behavior.Stun)
+            {
+                behaviorsList += "Stun ";
+            }
+        }
+        PlayerValues.QAbilityBehaviors = behaviorsList;
     }
 
 

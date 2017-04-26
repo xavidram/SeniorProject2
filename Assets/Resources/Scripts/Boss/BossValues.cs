@@ -15,15 +15,15 @@ public class BossValues {
     public static float _DamageDealt = 0;
 
     //  Q Ability Data
-    public static List<string> _QAbilityBehaviours;
+    public static string _QAbilityBehaviours = " ";
     public static float _QAbilityCasts = 0;
     public static float _QAbilityHits = 0;
     //  W Ability Data
-    public static string _WAbilityName;
+    public static string _WAbilityName = " ";
     public static float _WAbilityCasts = 0;
     public static float _WAbilityHits = 0;
     //  E Ability Data
-    public static string _EAbilityName;
+    public static string _EAbilityName = " ";
     public static float _EAbilityCasts = 0;
     public static float _EAbilityHits = 0;
 
@@ -65,7 +65,7 @@ public class BossValues {
         set { _DamageDealt = value; }
     }
 
-    public static List<string> QAbilityBehaviors
+    public static string QAbilityBehaviors
     {
         get { return _QAbilityBehaviours; }
         set { _QAbilityBehaviours = value; }

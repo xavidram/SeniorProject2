@@ -179,6 +179,7 @@ public class PlayerControls : MonoBehaviour
 
     public void CastQAbility()
     {
+        PlayerValues.QAbilityCasts += 1;
         UnityEngine.Debug.Log("Csting Q Ability");
         UnityEngine.Debug.Log(BossValues.Speed.ToString());
         GameObject Clone = Instantiate<GameObject>(Projectile);
@@ -188,6 +189,7 @@ public class PlayerControls : MonoBehaviour
     }
     public void CastWAbility()
     {
+        PlayerValues.WAbilityCasts += 1;
         UnityEngine.Debug.Log(WAbilityRandom.ToString());
         if (WAbilityRandom == (int)WAbilities.Chainmain)
             this.gameObject.GetComponent<Chainmail>();
@@ -200,6 +202,7 @@ public class PlayerControls : MonoBehaviour
     }
     public void CastEAbility()
     {
+        PlayerValues.EAbilityCasts += 1;
         UnityEngine.Debug.Log(EAbilityRandom.ToString());
         if (EAbilityRandom == (int)EAbilities.Blink)
         {

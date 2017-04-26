@@ -11,12 +11,11 @@ public class MenuCtrl : MonoBehaviour
 
     void Start()
     {
-        URL = "104.236.219.147/saveData/";
+        URL = "104.236.219.147:3000/saveData";
     }
 
     public void LoadScene(string sceneName)
     {
-        pushData();
         SceneManager.LoadScene(sceneName);
     }
 
@@ -26,6 +25,7 @@ public class MenuCtrl : MonoBehaviour
         GameData.GameRating = value;
         //call function to send all the data
         //pushData();
+        pushData();
         UnityEngine.Debug.Log(GameData.GameRating.ToString());
     }
 
@@ -36,6 +36,16 @@ public class MenuCtrl : MonoBehaviour
         {
             //  Game Form to be sent to api
             WWWForm gameInformation = new WWWForm();
+            var headers = gameInformation.headers;
+
+            if (!headers.ContainsKey("Content-Type"))
+            {
+                headers.Add("Content-Type", "application/x-www-form-urlencoded");
+            }else
+            {
+                headers["Content-Type"] = "application/x-www-form-urlencoded";
+            }
+           
             //  Add Player Data
             gameInformation.AddField("pHealth", PlayerValues.Health.ToString());
             gameInformation.AddField("pMaxHealth", PlayerValues.MaxHealth.ToString());
@@ -50,12 +60,13 @@ public class MenuCtrl : MonoBehaviour
             gameInformation.AddField("pECastHits", PlayerValues.EAbilityHits.ToString());
             gameInformation.AddField("pRAbility", PlayerValues.RAbilityName.ToString());
             gameInformation.AddField("pRCastCount", PlayerValues.RAbilityCasts.ToString());
-            gameInformation.AddField("PRCastHits", PlayerValues.RAbilityHits.ToString());
+            gameInformation.AddField("pRCastHits", PlayerValues.RAbilityHits.ToString());
             gameInformation.AddField("pDamageTaken", PlayerValues.DamageTaken.ToString());
             gameInformation.AddField("pDamageDealt", PlayerValues.DamageDealt.ToString());
             gameInformation.AddField("pSpeed", PlayerValues.Speed.ToString());
             gameInformation.AddField("pArmor", PlayerValues.Armor.ToString());
-            //  Grab boss data and serialize it
+            //  Grab boss data and serialize it            
+            
             gameInformation.AddField("bHealth", BossValues.Health.ToString());
             gameInformation.AddField("bMaxHealth", BossValues.MaxHealth.ToString());
             gameInformation.AddField("bQBehaviors", BossValues.QAbilityBehaviors.ToString());
@@ -74,9 +85,12 @@ public class MenuCtrl : MonoBehaviour
             //  Grab Game statistics and serialize it
             gameInformation.AddField("trialDuration", GameData.GameDuration.ToString());
             gameInformation.AddField("scenarioRating", GameData.GameRating.ToString());
-
+            
             // set up api location url and data
-            WWW www = new WWW(URL, gameInformation);
+            print("sending Data");
+            WWW www = new WWW("http://"+URL, gameInformation.data,headers);
+            print("starting coroutine");
+            StartCoroutine(Wait(3f));
             StartCoroutine(PostData(www));
         }
         catch (Exception e)
@@ -86,9 +100,18 @@ public class MenuCtrl : MonoBehaviour
 
     }
 
+    IEnumerator Wait(float time)
+    {
+        yield return new WaitForSeconds(time);
+    }
+
     IEnumerator PostData(WWW www)
     {
+        print("coroutine started");
         yield return www;
+        print("value returned");
+        print(www.text.ToString());
+
         if (www.error != null)
         {
             Debug.Log("Data Submitted");

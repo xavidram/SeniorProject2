@@ -103,6 +103,7 @@ public class BossAbility : MonoBehaviour {
                 print("stun");
             }
         }
+        ListOfBehaviors();
     }
 
     void Update() {
@@ -159,5 +160,30 @@ public class BossAbility : MonoBehaviour {
                 target.AddComponent<Stun>();
             }
         }
+    }
+
+    public void ListOfBehaviors()
+    {
+        string behaviorsList = "";
+        foreach (int i in behaviors)
+        {
+            if (i == (int)Behavior.Damage)
+            {
+                behaviorsList += "Damage ";
+            }
+            else if (i == (int)Behavior.DamageOverTime)
+            {
+                behaviorsList += "DamageOverTime ";
+            }
+            else if (i == (int)Behavior.Slow)
+            {
+                behaviorsList += "Slow ";
+            }
+            else if (i == (int)Behavior.Stun)
+            {
+                behaviorsList += "Stun ";
+            }
+        }
+        BossValues.QAbilityBehaviors = behaviorsList;
     }
 }
