@@ -8,10 +8,22 @@ public class MenuCtrl : MonoBehaviour
 {
 
     private string URL;
+    public GameObject tryAgain;
+    private Scene scene;
 
     void Start()
     {
+        scene = SceneManager.GetActiveScene();
         URL = "104.236.219.147:3000/saveData";
+        if(scene.name == "Victory"){
+            tryAgain = GameObject.Find("btn_TryAgain_Victory");
+            tryAgain.SetActive(false);
+        }
+        else if(scene.name == "Defeated"){
+            tryAgain = GameObject.Find("btn_TryAgain_Defeated");
+            tryAgain.SetActive(false);
+        }
+        else if (scene.name == "Main"){}
     }
 
     public void LoadScene(string sceneName)
@@ -24,8 +36,8 @@ public class MenuCtrl : MonoBehaviour
         // set the rating
         GameData.GameRating = value;
         //call function to send all the data
+        tryAgain.SetActive(true);
         //pushData();
-        pushData();
         UnityEngine.Debug.Log(GameData.GameRating.ToString());
     }
 
