@@ -94,6 +94,8 @@
     <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Sustain\GoldenApple.cs" />
     <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Sustain\SpellShield.cs" />
     <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Sustain\Steroids.cs" />
+    <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Ults\FireCannon.cs" />
+    <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Ults\IceBlast.cs" />
     <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Utility\Barrier.cs" />
     <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Utility\Blink.cs" />
     <Compile Include="Assets\Resources\Scripts\AbilitySystem\Behaviours\Damage.cs" />

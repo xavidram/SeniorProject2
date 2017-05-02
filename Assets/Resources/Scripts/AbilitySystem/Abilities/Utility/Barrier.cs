@@ -28,7 +28,7 @@ public class Barrier : MonoBehaviour {
     public void UseAbility(Vector3 Position)
     {
         abilityTimer.Start();
-        Rock.gameObject.transform.position = Position;
+        Rock.gameObject.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Rock.gameObject.GetComponent<Renderer>().enabled = true;
         // If to seconds elapsed, turn on collision
     }

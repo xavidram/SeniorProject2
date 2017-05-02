@@ -26,8 +26,14 @@ public class PlayerControls : MonoBehaviour
 
     private enum EAbilities : int
     {
-        Blink = 0,
-        Barrier = 1
+        //Blink = 0,
+        Barrier = 0
+    }
+
+    private enum RAbilities : int
+    {
+        Firecannon = 0,
+        Iceblast = 1
     }
 
     private GameObject Projectile;
@@ -58,6 +64,7 @@ public class PlayerControls : MonoBehaviour
     private int QAbilityRandom;
     private int EAbilityRandom;
     private int WAbilityRandom;
+    private int RAbilityRandom;
 
     // ability buttons
     public Image qImage;
@@ -82,7 +89,8 @@ public class PlayerControls : MonoBehaviour
         WAbilityRandom = Random.Range(0, System.Enum.GetValues(typeof(WAbilities)).Length);
         SetWAbility();
         EAbilityRandom = Random.Range(0, System.Enum.GetValues(typeof(EAbilities)).Length);
-        SetEAbility();
+        //SetEAbility();
+        RAbilityRandom = Random.Range(0, System.Enum.GetValues(typeof(RAbilities)).Length);
     }
 
     // Update is called once per frame
@@ -225,17 +233,32 @@ public class PlayerControls : MonoBehaviour
     {
         PlayerValues.EAbilityCasts += 1;
         UnityEngine.Debug.Log(EAbilityRandom.ToString());
+        /* Disabling until fixed
         if (EAbilityRandom == (int)EAbilities.Blink)
         {
             this.gameObject.AddComponent<Blink>().UseAbility();
         }
-        else if (EAbilityRandom == (int)EAbilities.Barrier)
+        
+        else */if (EAbilityRandom == (int)EAbilities.Barrier)
         {
             GameObject Rock = GameObject.Find("Rock");
             Rock.gameObject.GetComponent<Barrier>().UseAbility(this.transform.position);
         }
+        
     }
-    public void CastRAbility() { }
+    public void CastRAbility() {
+
+        if (RAbilityRandom == (int)RAbilities.Firecannon)
+        {
+            GameObject FireCannon = GameObject.Find("firecannon");
+            FireCannon.gameObject.GetComponent<FireCannon>().UseAbility(this.transform.position);
+        }
+        else if (RAbilityRandom == (int)RAbilities.Iceblast)
+        {
+            GameObject IceBlast = GameObject.Find("iceblast");
+            IceBlast.gameObject.GetComponent<IceBlast>().UseAbility(this.transform.position);
+        }
+    }
 
     private void resetAbilityBooleans()
     {
@@ -257,27 +280,4 @@ public class PlayerControls : MonoBehaviour
         else if (WAbilityRandom == (int)WAbilities.Steriods)
             this.gameObject.AddComponent<Steroids>();
     }
-    public void SetEAbility()
-    {
-        UnityEngine.Debug.Log(EAbilityRandom.ToString());
-        if (EAbilityRandom == (int)EAbilities.Blink)
-            this.gameObject.AddComponent<Blink>();
-        //else if (EAbilityRandom == (int)EAbilities.Barrier)
-        //
-    }
-
-    /*
-    public void SetQAbility()
-    {
-        if (QAbilityRandom == (int)QAbilities.FireBall)
-            this.gameObject.AddComponent<FireBall>();
-        else if (QAbilityRandom == (int)QAbilities.IceShard)
-            this.gameObject.AddComponent<IceShard>();
-        else if (QAbilityRandom == (int)QAbilities.FireSword)
-            this.gameObject.AddComponent<FireSword>();
-        else if (QAbilityRandom == (int)QAbilities.IceSword)
-            this.gameObject.AddComponent<IceSword>();
-    }
-    */
-
 }
