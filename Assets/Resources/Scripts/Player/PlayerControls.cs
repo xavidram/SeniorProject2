@@ -8,6 +8,14 @@ using UnityEngine.UI;
 public class PlayerControls : MonoBehaviour
 {
 
+    private enum QAbilities : int
+    {
+        FireBall = 0,
+        IceShard = 1,
+        FireSword = 2,
+        IceSword = 3
+    }
+
     private enum WAbilities : int
     {
         Chainmain = 0,
@@ -47,6 +55,7 @@ public class PlayerControls : MonoBehaviour
     private bool eAbilityCasted;
     private bool rAbilityCasted;
 
+    private int QAbilityRandom;
     private int EAbilityRandom;
     private int WAbilityRandom;
 
@@ -68,6 +77,8 @@ public class PlayerControls : MonoBehaviour
 
         Projectile = GameObject.Find("Projectile");
         resetAbilityBooleans(); //  Lets first reset abilities when game starts.
+        QAbilityRandom = Random.Range(0, System.Enum.GetValues(typeof(QAbilities)).Length);
+        //SetQAbility();
         WAbilityRandom = Random.Range(0, System.Enum.GetValues(typeof(WAbilities)).Length);
         SetWAbility();
         EAbilityRandom = Random.Range(0, System.Enum.GetValues(typeof(EAbilities)).Length);
@@ -179,13 +190,23 @@ public class PlayerControls : MonoBehaviour
 
     public void CastQAbility()
     {
-        PlayerValues.QAbilityCasts += 1;
-        UnityEngine.Debug.Log("Csting Q Ability");
-        UnityEngine.Debug.Log(BossValues.Speed.ToString());
-        GameObject Clone = Instantiate<GameObject>(Projectile);
-        Clone.transform.position = this.transform.position;
-        Clone.GetComponent<Renderer>().enabled = true;
-        Clone.SetActive(true);
+        if(QAbilityRandom == (int)QAbilities.FireBall){
+            GameObject Fireball = GameObject.Find("fireball_projectile");
+            Fireball.gameObject.GetComponent<FireBall>().UseAbility(this.transform.position);
+        }
+        else if(QAbilityRandom == (int)QAbilities.IceShard){
+            GameObject IceShard = GameObject.Find("iceshard_projectile");
+            IceShard.gameObject.GetComponent<IceShard>().UseAbility(this.transform.position);
+        }
+        else if(QAbilityRandom == (int)QAbilities.FireSword) {
+            GameObject FireSword = GameObject.Find("firesword_meele");
+            FireSword.gameObject.GetComponent<FireSword>().UseAbility(this.transform.position);
+        }
+        else if (QAbilityRandom == (int)QAbilities.IceSword){
+            GameObject IceSword = GameObject.Find("icesword_meele");
+            IceSword.gameObject.GetComponent<IceSword>().UseAbility(this.transform.position);
+        }
+        
     }
     public void CastWAbility()
     {
@@ -244,5 +265,19 @@ public class PlayerControls : MonoBehaviour
         //else if (EAbilityRandom == (int)EAbilities.Barrier)
         //
     }
+
+    /*
+    public void SetQAbility()
+    {
+        if (QAbilityRandom == (int)QAbilities.FireBall)
+            this.gameObject.AddComponent<FireBall>();
+        else if (QAbilityRandom == (int)QAbilities.IceShard)
+            this.gameObject.AddComponent<IceShard>();
+        else if (QAbilityRandom == (int)QAbilities.FireSword)
+            this.gameObject.AddComponent<FireSword>();
+        else if (QAbilityRandom == (int)QAbilities.IceSword)
+            this.gameObject.AddComponent<IceSword>();
+    }
+    */
 
 }

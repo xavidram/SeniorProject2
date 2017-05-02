@@ -75,6 +75,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Melee\FireSword.cs" />
+    <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Melee\IceSword.cs" />
+    <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Projectiles\FireBall.cs" />
     <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Projectiles\IceShard.cs" />
     <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Sustain\Chainmail.cs" />
     <Compile Include="Assets\Resources\Scripts\AbilitySystem\Abilities\Sustain\GoldenApple.cs" />
