@@ -71,13 +71,13 @@ public class BossAbility : MonoBehaviour {
                 behaviors.Add(0);
             }
         }
-
+        
         if (abilityType == (int)AbilityType.Projectile) {
             range = 10f;
             speed = 6f;
         }
         else if (abilityType == (int)AbilityType.Melee) {
-            range = 2f;
+            range = 3f;
             speed = 8f;
         }
 
@@ -89,6 +89,7 @@ public class BossAbility : MonoBehaviour {
         else if(abilityType == 1) {
             print("melee");
         }
+        print("range " + GetRange());
         foreach(int b in behaviors) {
             if(b == (int)Behavior.Damage) {
                 print("damage");
@@ -121,6 +122,13 @@ public class BossAbility : MonoBehaviour {
 
     public float GetRange() {
         return range;
+    }
+
+    public bool IsMelee() {
+        if(abilityType == (int)AbilityType.Melee) {
+            return true;
+        }
+        return false;
     }
 
     public void Fire(Vector3 targetPos) {

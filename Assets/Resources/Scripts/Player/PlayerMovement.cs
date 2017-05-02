@@ -6,10 +6,13 @@ public class PlayerMovement : MonoBehaviour {
 
     private Vector3 targetPosition;
     private Animator Anim;
+    private NavMeshAgent2D nmAgent;
 
 	// Use this for initialization
 	void Start () {
         Anim = GetComponent<Animator>();
+        nmAgent = GetComponent<NavMeshAgent2D>();
+        nmAgent.speed = PlayerValues.Speed;
 	}
 	
 	// Update is called once per frame
@@ -29,8 +32,9 @@ public class PlayerMovement : MonoBehaviour {
         }
         else
             Anim.SetBool("isWalking", false);
-        
+
         //  Move
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * PlayerValues.Speed);
+        nmAgent.destination = targetPosition;
+        //transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * PlayerValues.Speed);
 	}
 }

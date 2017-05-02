@@ -6,7 +6,7 @@ public class BossValues {
 
     public static float _Health = 200;
     public static float _MaxHealth = 200;
-    public static float _Speed = 1.5f;
+    public static float _Speed = 2.0f;
     public static float _Armor = 10f;
 
     public static float _HealthGain = 10f;
