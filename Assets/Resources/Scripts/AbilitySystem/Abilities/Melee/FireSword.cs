@@ -69,6 +69,7 @@ public class FireSword : MonoBehaviour {
     {
         if (hitObject.gameObject.name == "Boss")
         {
+            PlayerValues.QAbilityHits += 1;
             // Fire Sword does damage, damage over time
             hitObject.gameObject.AddComponent<Damage>();
             hitObject.gameObject.AddComponent<DamageOverTime>();

@@ -53,6 +53,7 @@ public class BossController : MonoBehaviour {
         ability1 = GameObject.Find("BossProjectile").GetComponent<BossAbility>();
         ability2 = GameObject.Find("BossProjectile2").GetComponent<BossAbility>();
         ability3 = gameObject.GetComponent<BossUtility>();
+        
 
         minRange = -1;
 
@@ -63,6 +64,9 @@ public class BossController : MonoBehaviour {
         strafeTimer = 0;
 
         strafeMag = 0f;
+
+
+
     }
 
     // Update is called once per frame
@@ -90,12 +94,14 @@ public class BossController : MonoBehaviour {
                     if (UType == (int)BossUtility.Behavior.Armor) {
                         if (a3Timer <= 0) {
                             ability3.Use();
+                            BossValues.EAbilityCasts += 1;
                         }
                     }
                     else if (UType == (int)BossUtility.Behavior.HealthRegen) {
                         if (a3Timer <= 0) {
                             if (BossValues.Health < BossValues.MaxHealth) {
                                 ability3.Use();
+                                BossValues.EAbilityCasts += 1;
                             }
                         }
                     }
@@ -103,18 +109,21 @@ public class BossController : MonoBehaviour {
                         if (a3Timer <= 0) {
                             if (playerDist > ability2.GetRange() || playerDist > ability1.GetRange()) {
                                 ability3.Use();
+                                BossValues.EAbilityCasts += 1;
                             }
                         }
                     }
                     if (a2Timer <= 0) {
                         if (playerDist < ability2.GetRange()) {
                             ability2.Fire(Player.transform.position);
+                            BossValues.WAbilityCasts += 1;
                             a2Timer = a2CD;
                         }
                     }
                     if (a1Timer <= 0) {
                         if (playerDist < ability1.GetRange()) {
                             ability1.Fire(Player.transform.position);
+                            BossValues.QAbilityCasts += 1;
                             a1Timer = a1CD;
                         }
                     }
@@ -163,12 +172,14 @@ public class BossController : MonoBehaviour {
                     if (UType == (int)BossUtility.Behavior.Armor) {
                         if (a3Timer <= 0) {
                             ability3.Use();
+                            BossValues.EAbilityCasts += 1;
                         }
                     }
                     else if (UType == (int)BossUtility.Behavior.HealthRegen) {
                         if (a3Timer <= 0) {
                             if (BossValues.Health < BossValues.MaxHealth) {
                                 ability3.Use();
+                                BossValues.EAbilityCasts += 1;
                             }
                         }
                     }
@@ -176,6 +187,7 @@ public class BossController : MonoBehaviour {
                         if (a3Timer <= 0) {
                             if (playerDist > ability2.GetRange() || playerDist > ability1.GetRange()) {
                                 ability3.Use();
+                                BossValues.EAbilityCasts += 1;
                             }
                         }
                     }
@@ -183,12 +195,14 @@ public class BossController : MonoBehaviour {
                         if (playerDist < ability2.GetRange()) {
                             ability2.Fire(Player.transform.position);
                             a2Timer = a2CD;
+                            BossValues.WAbilityCasts += 1;
                         }
                     }
                     if (a1Timer <= 0) {
                         if (playerDist < ability1.GetRange()) {
                             ability1.Fire(Player.transform.position);
                             a1Timer = a1CD;
+                            BossValues.QAbilityCasts += 1;
                         }
                     }
                 }

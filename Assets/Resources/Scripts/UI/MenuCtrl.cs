@@ -37,7 +37,7 @@ public class MenuCtrl : MonoBehaviour
         GameData.GameRating = value;
         //call function to send all the data
         tryAgain.SetActive(true);
-        //pushData();
+        pushData();
         UnityEngine.Debug.Log(GameData.GameRating.ToString());
     }
 

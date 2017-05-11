@@ -32,9 +32,17 @@ public class DamageOverTime : MonoBehaviour {
         {
             //  Deal damage to player or boss depending on tag of object.
             if (this.gameObject.tag == "Boss")
+            {
                 BossValues.Health -= BaseDamage;
+                BossValues.DamageTaken += BaseDamage;
+                PlayerValues.DamageDealt += BaseDamage;
+            }
             else if (this.gameObject.tag == "Player")
+            {
                 PlayerValues.Health -= BaseDamage;
+                PlayerValues.DamageTaken += BaseDamage;
+                BossValues.DamageDealt += BaseDamage;
+            }
 
             yield return new WaitForSeconds(1); // deal every second
         }

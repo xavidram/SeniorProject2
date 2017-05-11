@@ -154,6 +154,13 @@ public class BossAbility : MonoBehaviour {
     }
 
     public void Collide(GameObject target) {
+        if(abilityNum == 1)
+        {
+            BossValues.QAbilityHits += 1;
+        }else if (abilityNum == 2)
+        {
+            BossValues.WAbilityHits += 1;
+        }
         foreach (int i in behaviors) {
             if (i == (int)Behavior.Damage) {
                 target.AddComponent<Damage>();
@@ -192,6 +199,11 @@ public class BossAbility : MonoBehaviour {
                 behaviorsList += "Stun ";
             }
         }
-        BossValues.QAbilityBehaviors = behaviorsList;
+        if(abilityNum == 1)
+        {
+            BossValues.QAbilityBehaviors = behaviorsList;
+        }else if(abilityNum == 2) {
+            BossValues.WAbilityName = behaviorsList;
+        }
     }
 }

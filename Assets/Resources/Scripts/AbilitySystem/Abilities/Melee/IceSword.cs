@@ -69,6 +69,7 @@ public class IceSword : MonoBehaviour {
     {
         if (hitObject.gameObject.name == "Boss")
         {
+            PlayerValues.QAbilityHits += 1;
             // Ice Sword does damage, and slows on hit
             hitObject.gameObject.AddComponent<Damage>();
             hitObject.gameObject.AddComponent<Slow>();

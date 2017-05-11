@@ -24,6 +24,8 @@ public class Damage : MonoBehaviour {
                 UnityEngine.Debug.Log("This is a Boss");
                 //  Armor did not soke up all damage, deal it
                 BossValues.Health -= DamageTaken;
+                BossValues.DamageTaken += BaseDamage;
+                PlayerValues.DamageDealt += BaseDamage;
             }
         }else if (this.gameObject.name == "Player")
         {
@@ -32,6 +34,8 @@ public class Damage : MonoBehaviour {
             if(DamageTaken > 0)
             {
                 PlayerValues.Health -= DamageTaken;
+                PlayerValues.DamageTaken += BaseDamage;
+                BossValues.DamageDealt += BaseDamage;
             }
         }
         Destroy(this);

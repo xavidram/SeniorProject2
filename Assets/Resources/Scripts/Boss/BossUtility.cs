@@ -29,12 +29,15 @@ public class BossUtility : MonoBehaviour {
         print("boss utility");
         if(utility == 0) {
             print("armor");
+            BossValues.EAbilityName = "Gain Armor";
         }
         else if(utility == 1) {
             print("healthregen");
+            BossValues.EAbilityName = "Health Regen";
         }
         else if(utility == 2) {
             print("speed");
+            BossValues.EAbilityName = "Speed Boost";
         }
 	}
 	

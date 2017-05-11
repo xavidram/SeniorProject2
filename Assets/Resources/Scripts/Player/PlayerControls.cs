@@ -91,6 +91,7 @@ public class PlayerControls : MonoBehaviour
         EAbilityRandom = Random.Range(0, System.Enum.GetValues(typeof(EAbilities)).Length);
         //SetEAbility();
         RAbilityRandom = Random.Range(0, System.Enum.GetValues(typeof(RAbilities)).Length);
+
     }
 
     // Update is called once per frame
@@ -198,6 +199,7 @@ public class PlayerControls : MonoBehaviour
 
     public void CastQAbility()
     {
+        PlayerValues.QAbilityCasts += 1;
         if(QAbilityRandom == (int)QAbilities.FireBall){
             GameObject Fireball = GameObject.Find("fireball_projectile");
             Fireball.gameObject.GetComponent<FireBall>().UseAbility(this.transform.position);
@@ -243,20 +245,26 @@ public class PlayerControls : MonoBehaviour
         {
             GameObject Rock = GameObject.Find("Rock");
             Rock.gameObject.GetComponent<Barrier>().UseAbility(this.transform.position);
+            if (PlayerValues.EAbilityName == " ")
+                PlayerValues.EAbilityName = "Barrier";
         }
         
     }
     public void CastRAbility() {
-
+        PlayerValues.RAbilityCasts += 1;
         if (RAbilityRandom == (int)RAbilities.Firecannon)
         {
             GameObject FireCannon = GameObject.Find("firecannon");
             FireCannon.gameObject.GetComponent<FireCannon>().UseAbility(this.transform.position);
+            if (PlayerValues.RAbilityName == " ")
+                PlayerValues.RAbilityName = "FireCannon";
         }
         else if (RAbilityRandom == (int)RAbilities.Iceblast)
         {
             GameObject IceBlast = GameObject.Find("iceblast");
             IceBlast.gameObject.GetComponent<IceBlast>().UseAbility(this.transform.position);
+            if (PlayerValues.RAbilityName == " ")
+                PlayerValues.RAbilityName = "IceBlast";
         }
     }
 
@@ -272,12 +280,24 @@ public class PlayerControls : MonoBehaviour
     {
         UnityEngine.Debug.Log(WAbilityRandom.ToString());
         if (WAbilityRandom == (int)WAbilities.Chainmain)
+        {
             this.gameObject.AddComponent<Chainmail>();
+            PlayerValues.WAbilityName = "Chainmail";
+        }
         else if (WAbilityRandom == (int)WAbilities.GoldenApple)
+        {
             this.gameObject.AddComponent<GoldenApple>();
+            PlayerValues.WAbilityName = "GoldenApple";
+        }
         else if (WAbilityRandom == (int)WAbilities.SpellShield)
+        {
             this.gameObject.AddComponent<SpellShield>();
+            PlayerValues.WAbilityName = "SpellShield";
+        }
         else if (WAbilityRandom == (int)WAbilities.Steriods)
+        {
             this.gameObject.AddComponent<Steroids>();
+            PlayerValues.WAbilityName = "SpellShield";
+        }
     }
 }
